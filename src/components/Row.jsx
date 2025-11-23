@@ -18,26 +18,38 @@ export default function Row({id, title, fetchUrl, isLargeRow }) {
   }
 
   return (
-    <section className='row'>
+    <section className="row">
       <h2>{title}</h2>
       <div className="slider">
-        <div className='slider__arrow-left'>
-          <span className='arrow'>&lt;</span>
+        <div
+          className="slider__arrow-left"
+          onClick={() => {
+            document.getElementById(id).scrollLeft -= window.innerWidth - 80;
+          }}
+        >
+          <span className="arrow">&lt;</span>
         </div>
         <div id={id} className="row__posters">
           {movies.map((movie) => (
-            <img 
+            <img
               key={movie.id}
-              className={`row__poster ${isLargeRow && "row__posterLarge"}`} 
-              src={`https://image.tmdb.org/t/p/original/${isLargeRow ? movie.poster_path : movie.backdrop_path}`} 
-              alt={movie.name} 
-            />  
+              className={`row__poster ${isLargeRow && "row__posterLarge"}`}
+              src={`https://image.tmdb.org/t/p/original/${
+                isLargeRow ? movie.poster_path : movie.backdrop_path
+              }`}
+              alt={movie.name}
+            />
           ))}
         </div>
-        <div className='slider__arrow-right'>
-          <span className='arrow'>&gt;</span>
-        </div>  
+        <div
+          className="slider__arrow-right"
+          onClick={() => {
+            document.getElementById(id).scrollLeft += window.innerWidth - 80;
+          }}
+        >
+          <span className="arrow">&gt;</span>
+        </div>
       </div>
     </section>
-  )
+  );
 }
