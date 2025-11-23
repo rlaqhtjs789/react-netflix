@@ -1,53 +1,33 @@
 import Nav from "./components/Nav";
 import "./App.css";
-import Banner from "./components/Banner";
-import Row from "./components/Row";
-import requests from "./api/requests";
+import { Routes, Route } from "react-router-dom";
 import Footer from "./components/Footer";
+import { Outlet } from "react-router-dom";
+import MainPage from "./pages/MainPage";
+import DetailPage from "./pages/DetailPage";
+import SearchPage from "./pages/SearchPage";
+
+const Layout = () => {
+  return (
+    <div>
+      <Nav />
+      <Outlet />
+      <Footer />
+    </div>
+  )
+
+}
 
 function App() {
   return (
     <div className="App">
-      {/* Navigaion */}
-      <Nav></Nav>
-      {/* Banner */}
-      <Banner></Banner>
-      {/* Row */}
-      <Row
-        title="NETFLIX ORIGINALS"
-        id="NO"
-        fetchUrl={requests.fetchNetflixOriginals}
-        isLargeRow
-      ></Row>
-      <Row title="Trending Now" id="TN" fetchUrl={requests.fetchTrending}></Row>
-      <Row title="Top Rated" id="TR" fetchUrl={requests.fetchTopRated}></Row>
-      <Row
-        title="Action Movies"
-        id="AM"
-        fetchUrl={requests.fetchActionMovies}
-      ></Row>
-      <Row
-        title="Comedy Movies"
-        id="CM"
-        fetchUrl={requests.fetchComedyMovies}
-      ></Row>
-      <Row
-        title="Horror Movies"
-        id="HM"
-        fetchUrl={requests.fetchHorrorMovies}
-      ></Row>
-      <Row
-        title="Romance Movies"
-        id="RM"
-        fetchUrl={requests.fetchRomanceMovies}
-      ></Row>
-      <Row
-        title="Documentaries"
-        id="DM"
-        fetchUrl={requests.fetchDocumentaries}
-      ></Row>
-      {/* Footer */}
-      <Footer></Footer>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<MainPage />} />
+          <Route path=":movieId" element={<DetailPage />} />
+          <Route path="search" element={<SearchPage />} />
+        </Route>
+      </Routes>
     </div>
   );
 }
