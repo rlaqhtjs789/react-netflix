@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import "./Nav.css";
 
 export default function Nav() {
+  /**
+   * Navbar scroll effect
+   */
   const [show, setShow] = useState(false);
 
   useEffect(() => {
