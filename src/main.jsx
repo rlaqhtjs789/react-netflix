@@ -17,7 +17,10 @@ const router = createBrowserRouter([
       { path: "search", element: <SearchPage /> },
     ]
   }
-]);
+], { 
+  // 프로덕션(build) 환경에서만 basename을 적용합니다.
+  basename: import.meta.env.PROD ? "/react-netflix/" : "/",
+ });
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
