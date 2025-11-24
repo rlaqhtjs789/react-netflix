@@ -34,10 +34,17 @@ export default function Nav() {
         alt="Netflix Logo"
         src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/2560px-Netflix_2015_logo.svg.png"
         className="nav__logo"
-        onClick={() => window.location.reload()}
+        style={{ cursor: "pointer" }}
+        onClick={() => navigate("/")}
       />
 
-      <input type="text" value={searchValue} placeholder="영화를 검색해주세요" onChange={handleChange} className="nav__input" />
+      <input
+        type="text"
+        value={searchValue}
+        placeholder="영화를 검색해주세요"
+        onChange={handleChange}
+        className="nav__input"
+      />
 
       <img
         alt="User Avatar"
