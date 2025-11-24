@@ -1,11 +1,8 @@
 import Nav from "./components/Nav";
 import "./App.css";
-import { Routes, Route } from "react-router-dom";
 import Footer from "./components/Footer";
 import { Outlet } from "react-router-dom";
-import MainPage from "./pages/MainPage";
-import DetailPage from "./pages/DetailPage";
-import SearchPage from "./pages/SearchPage";
+
 
 const Layout = () => {
   return (
@@ -18,18 +15,7 @@ const Layout = () => {
 
 }
 
-function App() {
-  return (
-    <div className="App">
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<MainPage />} />
-          <Route path=":movieId" element={<DetailPage />} />
-          <Route path="search" element={<SearchPage />} />
-        </Route>
-      </Routes>
-    </div>
-  );
-}
-
-export default App;
+// main.jsx에서 createBrowserRouter를 사용하므로
+// App.jsx에서는 Layout 컴포넌트만 export하면 됩니다.
+// 기존 App 컴포넌트는 더 이상 필요하지 않습니다.
+export default Layout;
