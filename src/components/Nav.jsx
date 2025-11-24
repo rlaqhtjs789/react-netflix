@@ -10,17 +10,17 @@ export default function Nav() {
   const [searchValue, setSearchValue] = useState("");
   const navigate = useNavigate();
 
+  const handleScroll = () => {
+    if (window.scrollY > 50) {
+      setShow(true);
+    } else {
+      setShow(false);
+    }
+  };
+
   useEffect(() => {
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 50) {
-        setShow(true);
-      } else {
-        setShow(false);
-      }
-    });
-    return () => {
-      window.removeEventListener("scroll", () => {});
-    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const handleChange = (e) => {
